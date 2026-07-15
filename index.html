@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anurag TK | AI, Data & Automation Consultant</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="AI, Data & Automation Consultant. Helping businesses scale with custom AI agents, automated ETL pipelines, data warehouses, and interactive dashboards.">
+  
+  <!-- Premium Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    :root {
+      --bg-dark: #070a13;
+      --bg-card: rgba(17, 24, 39, 0.7);
+      --border-color: rgba(255, 255, 255, 0.08);
+      --border-active: rgba(59, 130, 246, 0.4);
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      
+      /* Curated Palette */
+      --primary: #3b82f6;
+      --primary-glow: rgba(59, 130, 246, 0.15);
+      --accent: #60a5fa;
+      --accent-green: #34d399;
+      --accent-red: #f87171;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Inter', sans-serif;
+      letter-spacing: -0.02em;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Glow Background Elements */
+    .glow-bg {
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, rgba(7, 10, 19, 0) 70%);
+      top: -100px;
+      right: -100px;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .glow-bg-bottom {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(96, 165, 250, 0.05) 0%, rgba(7, 10, 19, 0) 70%);
+      bottom: 200px;
+      left: -100px;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* Navigation Bar */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(7, 10, 19, 0.75);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
+      z-index: 1000;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 72px;
+    }
+
+    .logo {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--text-main);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo span {
+      background: linear-gradient(to right, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .book-btn {
+      background: var(--primary);
+      color: #fff !important;
+      padding: 8px 16px;
+      border-radius: 8px;
+      transition: background 0.2s ease, transform 0.2s ease !important;
+    }
+
+    .book-btn:hover {
+      background: var(--primary-hover);
+      transform: translateY(-1px);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 160px 0 80px 0;
+      position: relative;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(59, 130, 246, 0.1);
+      border: 1px solid rgba(59, 130, 246, 0.2);
+      color: var(--accent);
+      padding: 6px 16px;
+      border-radius: 100px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+
+    .hero-title {
+      font-size: 3.5rem;
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 24px;
+      background: linear-gradient(to bottom, #ffffff 60%, #a3a3a3 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      margin-bottom: 40px;
+      max-width: 650px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-ctas {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+      box-shadow: 0 4px 14px rgba(59, 130, 246, 0.3);
+    }
+
+    .btn-primary:hover {
+      background: #2563eb;
+      box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-main);
+      border: 1px solid var(--border-color);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-2px);
+    }
+
+    /* Sections General styling */
+    section {
+      padding: 100px 0;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .section-header {
+      max-width: 700px;
+      margin-bottom: 60px;
+    }
+
+    .section-tag {
+      color: var(--primary);
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .section-title {
+      font-size: 2.25rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .section-desc {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+    }
+
+    /* About Section */
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 32px;
+    }
+
+    .about-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 32px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .about-card:hover {
+      border-color: var(--border-active);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px rgba(59, 130, 246, 0.05);
+    }
+
+    .about-icon {
+      width: 48px;
+      height: 48px;
+      background: rgba(59, 130, 246, 0.1);
+      color: var(--accent);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+
+    .about-card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 12px;
+    }
+
+    .about-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* Services (Problem/Solution) Section */
+    .services-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .service-block {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 40px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+      transition: border-color 0.3s ease;
+    }
+
+    @media(min-width: 900px) {
+      .service-block {
+        grid-template-columns: 1fr 1fr;
+        align-items: stretch;
+      }
+    }
+
+    .service-block:hover {
+      border-color: var(--border-active);
+    }
+
+    .service-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .service-title-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .service-num {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--accent);
+      background: rgba(59, 130, 246, 0.1);
+      padding: 4px 8px;
+      border-radius: 6px;
+    }
+
+    .service-info h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .service-problem {
+      background: rgba(248, 113, 113, 0.03);
+      border-left: 3px solid var(--accent-red);
+      padding: 24px;
+      border-radius: 0 12px 12px 0;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 14px;
+    }
+
+    .problem-header {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: var(--accent-red);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .problem-quote {
+      font-style: italic;
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      position: relative;
+    }
+
+    .service-solution-content {
+      color: var(--text-muted);
+      font-size: 1rem;
+      margin-top: 16px;
+    }
+
+    .service-solution-content p {
+      margin-bottom: 12px;
+    }
+
+    .service-solution-content p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Case Studies Section */
+    .cases-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 32px;
+    }
+
+    @media (max-width: 480px) {
+      .cases-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .case-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.3s ease;
+    }
+
+    .case-card:hover {
+      border-color: var(--border-active);
+      transform: translateY(-4px);
+    }
+
+    .case-badge {
+      display: inline-block;
+      background: rgba(59, 130, 246, 0.1);
+      color: var(--accent);
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+
+    .case-card h3 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .case-client {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .case-field {
+      margin-bottom: 16px;
+    }
+
+    .case-field strong {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .case-field p {
+      font-size: 0.95rem;
+      color: var(--text-main);
+    }
+
+    .case-impact {
+      background: rgba(52, 211, 153, 0.05);
+      border: 1px solid rgba(52, 211, 153, 0.15);
+      padding: 16px;
+      border-radius: 10px;
+      margin-top: 12px;
+    }
+
+    .case-impact strong {
+      font-size: 0.75rem;
+      color: var(--accent-green);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+
+    .case-impact p {
+      font-size: 0.92rem;
+      color: #a7f3d0;
+    }
+
+    /* Contact Section */
+    .contact-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 32px;
+      margin-bottom: 60px;
+    }
+
+    .contact-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 32px;
+      text-align: center;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      color: var(--text-main);
+    }
+
+    .contact-card:hover {
+      border-color: var(--border-active);
+      transform: translateY(-4px);
+    }
+
+    .contact-icon {
+      width: 56px;
+      height: 56px;
+      background: rgba(59, 130, 246, 0.1);
+      color: var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .contact-card h3 {
+      font-size: 1.15rem;
+      margin-bottom: 8px;
+    }
+
+    .contact-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* Booking Cal.com Section */
+    .booking-wrapper {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      padding: 16px;
+    }
+
+    .cal-frame {
+      width: 100%;
+      height: 650px;
+      border: none;
+      border-radius: 12px;
+    }
+
+    /* Footer */
+    footer {
+      padding: 60px 0;
+      border-top: 1px solid var(--border-color);
+      background: #04060b;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    footer p {
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="glow-bg"></div>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="container nav-container">
+      <a href="#" class="logo">
+        <i data-lucide="cpu" style="width: 24px; height: 24px; color: var(--accent)"></i>
+        BHARATH <span>METRICS</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#work">Case Studies</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#book" class="book-btn">Book Consultation</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="container hero-content">
+      <h1 class="hero-title">AI, Data & Automation Services</h1>
+      <p class="hero-subtitle">
+        We work with businesses to deliver measurable leverage through intelligent dashboards, custom AI and agentic workflows, analytics and scalable data pipelines.
+      </p>
+      <div class="hero-ctas">
+        <a href="#book" class="btn btn-primary">Book Free Consult</a>
+        <a href="#work" class="btn btn-secondary">View Case Studies</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- About Section -->
+  <section id="about">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Value Proposition</span>
+        <h2 class="section-title">What we Help Businesses Achieve</h2>
+        <p class="section-desc">Practical, high-performing technical engineering aimed at business growth and operational capacity expansion.</p>
+      </div>
+      <div class="about-grid">
+        <div class="about-card">
+          <div class="about-icon"><i data-lucide="zap"></i></div>
+          <h3>Reduce Manual Overhead</h3>
+          <p>Ditch repetitive data entry, drafting, and document analysis. Deployed systems automate workflow orchestration, clearing processing backlogs and saving thousands of work hours.</p>
+        </div>
+        <div class="about-card">
+          <div class="about-icon"><i data-lucide="shield-check"></i></div>
+          <h3>Deploy Secure AI Systems</h3>
+          <p>Develop proprietary, private Knowledge Bases and LLM-assisted document interfaces. Secure integration protects corporate IP, filters PII, and maintains strict data governance.</p>
+        </div>
+        <div class="about-card">
+          <div class="about-icon"><i data-lucide="bar-chart-3"></i></div>
+          <h3>Data-Driven Infrastructure</h3>
+          <p>Consolidate disparate marketing, CRM, and financial data into a clean, modern data warehouse. Deliver reliable data pipelines and executive dashboards for fast decision-making.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services (Problems/Solutions) Section -->
+  <section id="services">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Capabilities</span>
+        <h2 class="section-title">Services & Client Interventions</h2>
+        <p class="section-desc">Below are the custom packages and solutions we design to address core structural data and automation pain points.</p>
+      </div>
+      <div class="services-stack">
+        
+        <!-- Service 1 -->
+        <div class="service-block">
+          <div class="service-info">
+            <div>
+              <div class="service-title-container">
+                <span class="service-num">01</span>
+                <h3>AI Agents & Workflow Automation</h3>
+              </div>
+              <div class="service-solution-content">
+                <p>We design custom AI agents, chatbots, and NLP pipelines to automate document processing and manage business knowledge.</p>
+                <p>We integrate tools like Zapier, Power Automate, and MCP platforms to orchestrate workflows and eliminate manual backlogs.</p>
+              </div>
+            </div>
+          </div>
+          <div class="service-problem">
+            <span class="problem-header"><i data-lucide="alert-circle" style="width:14px;height:14px"></i> Client Challenges</span>
+            <p class="problem-quote">"Our operations team is buried in repetitive customer support and documentation backlogs that could easily be triaged by an AI assistant."</p>
+            <p class="problem-quote">"We want to adopt AI agents, but our data is so unstructured, messy, and undocumented that we do not know where to start."</p>
+            <p class="problem-quote">"We spend hours manually checking incoming contract files for compliance when an automated pipeline should do it in seconds."</p>
+          </div>
+        </div>
+
+        <!-- Service 2 -->
+        <div class="service-block">
+          <div class="service-info">
+            <div>
+              <div class="service-title-container">
+                <span class="service-num">02</span>
+                <h3>Data Engineering & Multi-Platform Integration</h3>
+              </div>
+              <div class="service-solution-content">
+                <p>We engineer robust data warehouses and ETL pipelines to scrape, validate, and unify fragmented multi-platform systems.</p>
+                <p>By connecting CRMs, ERPs, and APIs, we turn isolated data silos into scalable, automated infrastructure.</p>
+              </div>
+            </div>
+          </div>
+          <div class="service-problem">
+            <span class="problem-header"><i data-lucide="alert-circle" style="width:14px;height:14px"></i> Client Challenges</span>
+            <p class="problem-quote">"We have business data scattered across five different SaaS platforms, and nobody has a single, trustworthy source of truth."</p>
+            <p class="problem-quote">"We cannot scale our operations because our core data workflows still depend on one or two key individuals running manual scripts."</p>
+            <p class="problem-quote">"We are collecting massive amounts of customer data, but it is sitting idle in database cold storage because it’s too difficult to access."</p>
+          </div>
+        </div>
+
+        <!-- Service 3 -->
+        <div class="service-block">
+          <div class="service-info">
+            <div>
+              <div class="service-title-container">
+                <span class="service-num">03</span>
+                <h3>Business Intelligence & Dashboard Reporting</h3>
+              </div>
+              <div class="service-solution-content">
+                <p>We construct automated executive, BI, and client-facing dashboards using GA, analytics, and custom campaign metrics.</p>
+                <p>We consolidate disparate metrics into a single reporting layout, giving your teams instant, reliable visual insights.</p>
+              </div>
+            </div>
+          </div>
+          <div class="service-problem">
+            <span class="problem-header"><i data-lucide="alert-circle" style="width:14px;height:14px"></i> Client Challenges</span>
+            <p class="problem-quote">"My team spends the first three days of every month copying and pasting numbers into Excel instead of focusing on growth strategy."</p>
+            <p class="problem-quote">"Whenever a client asks for an ad-hoc performance report, it takes us 48 hours and three different departments to assemble it."</p>
+            <p class="problem-quote">"Every department reports a different version of the same KPI because our data definitions are not unified."</p>
+          </div>
+        </div>
+
+        <!-- Service 4 -->
+        <div class="service-block">
+          <div class="service-info">
+            <div>
+              <div class="service-title-container">
+                <span class="service-num">04</span>
+                <h3>Predictive Analytics & Decision Science</h3>
+              </div>
+              <div class="service-solution-content">
+                <p>We build time-series forecasting models, lead scoring mechanisms, and recommendation engines tailored to your database history.</p>
+                <p>This converts static records into real-time predictive insights, proactive anomaly alerts, and automated decision frameworks.</p>
+              </div>
+            </div>
+          </div>
+          <div class="service-problem">
+            <span class="problem-header"><i data-lucide="alert-circle" style="width:14px;height:14px"></i> Client Challenges</span>
+            <p class="problem-quote">"Our managers are forced to make high-stakes, day-to-day decisions based on historical data that is already two weeks out of date."</p>
+            <p class="problem-quote">"We miss critical operational anomalies because we rely on team members manually checking dashboards instead of automated alerts."</p>
+            <p class="problem-quote">"By the time we compile and clean our reports to find actionable insights, the window of opportunity has already closed."</p>
+          </div>
+        </div>
+
+        <!-- Service 5 -->
+        <div class="service-block">
+          <div class="service-info">
+            <div>
+              <div class="service-title-container">
+                <span class="service-num">05</span>
+                <h3>Data Compliance & Custom Internal Tools</h3>
+              </div>
+              <div class="service-solution-content">
+                <p>We develop bespoke internal tools and validation pipelines to automate data review, compliance, and PII masking.</p>
+                <p>We audit cloud databases and conduct research to optimize APIs, ensuring secure operations and minimized overhead.</p>
+              </div>
+            </div>
+          </div>
+          <div class="service-problem">
+            <span class="problem-header"><i data-lucide="alert-circle" style="width:14px;height:14px"></i> Client Challenges</span>
+            <p class="problem-quote">"Sharing customer data with our analysts is a major compliance risk because we lack automated PII masking and anonymization."</p>
+            <p class="problem-quote">"Our cloud database and API costs are skyrocketing, and we have no visibility into which query or service is driving the spend."</p>
+            <p class="problem-quote">"Assessing performance is nearly impossible because our data updates are inconsistent, fragmented, and late."</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Case Studies Section -->
+  <section id="work">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Case Studies</span>
+        <h2 class="section-title">Client Success Stories</h2>
+        <p class="section-desc">Explore the detailed architecture, core solutions, and business impact delivered in previous consulting engagements.</p>
+      </div>
+      <div class="cases-grid">
+        
+        <!-- Case Study 1 -->
+        <div class="case-card">
+          <div>
+            <span class="case-badge">B2B Lead Intelligence</span>
+            <h3>Lead Scoring & Topic Intelligence</h3>
+            <div class="case-client"><i data-lucide="building" style="width:14px;height:14px"></i> Industry: Digital Media & Event Marketing</div>
+            
+            <div class="case-field">
+              <strong>The Problem</strong>
+              <p>Sponsors were provided with raw, flat lead sheets lacking content engagement details, which led to poor sales conversion rates and threatened critical renewals.</p>
+            </div>
+            
+            <div class="case-field">
+              <strong>The Solution</strong>
+              <p>Built a real-time behavioral data pipeline using AWS Glue and Snowflake. Integrated an NLP-based topic extraction model to map user clicks/reads, feeding a custom lead-scoring engine.</p>
+            </div>
+          </div>
+          
+          <div class="case-impact">
+            <strong><i data-lucide="trending-up" style="width:14px;height:14px"></i> Impact Details</strong>
+            <p>Processed 1M+ lead profiles. Sponsors saw a 30% increase in sales conversion rates by pitching precise interests. Retained all major event sponsorship revenues.</p>
+          </div>
+        </div>
+
+        <!-- Case Study 2 -->
+        <div class="case-card">
+          <div>
+            <span class="case-badge">GenAI / Document Automation</span>
+            <h3>GenAI Report & Document Automation</h3>
+            <div class="case-client"><i data-lucide="building" style="width:14px;height:14px"></i> Industry: Public Sector & Local Government</div>
+            
+            <div class="case-field">
+              <strong>The Problem</strong>
+              <p>Case managers spent 15-20 hours manually drafting each Education, Health, and Care Plan (EHCP) from fragmented physical documents, causing a massive processing backlog.</p>
+            </div>
+            
+            <div class="case-field">
+              <strong>The Solution</strong>
+              <p>Created "EHCP Plus," a GenAI multi-agent workflow. Used AWS Textract for OCR and Whisper for dictation. Programmed automated retrieval (RAG), section drafting, and multi-agent citation check.</p>
+            </div>
+          </div>
+          
+          <div class="case-impact">
+            <strong><i data-lucide="trending-up" style="width:14px;height:14px"></i> Impact Details</strong>
+            <p>Reduced document drafting time by 80% (under 3 hours per plan). Cleared months of historical case backlog within 90 days, easing operational burnout.</p>
+          </div>
+        </div>
+
+        <!-- Case Study 3 -->
+        <div class="case-card">
+          <div>
+            <span class="case-badge">Computer Vision / Brand Safety</span>
+            <h3>Automated Media Monitoring System</h3>
+            <div class="case-client"><i data-lucide="building" style="width:14px;height:14px"></i> Industry: Media & Intellectual Property Management</div>
+            
+            <div class="case-field">
+              <strong>The Problem</strong>
+              <p>Scammers hijacked executive likenesses for deepfake crypto scams on video platforms. Manual searches were too slow, allowing unauthorized content to sit online for days.</p>
+            </div>
+            
+            <div class="case-field">
+              <strong>The Solution</strong>
+              <p>Developed an automated scanner using Selenium, frame-sampling, and a fine-tuned Python facial recognition model. Deployed on AWS ECS/Fargate with Slack/webhook alerts.</p>
+            </div>
+          </div>
+          
+          <div class="case-impact">
+            <strong><i data-lucide="trending-up" style="width:14px;height:14px"></i> Impact Details</strong>
+            <p>Achieved 100% automation. Cut alert response time from 48 hours to under 15 minutes, reducing manual review costs by 95% and securing high-profile clients.</p>
+          </div>
+        </div>
+
+        <!-- Case Study 4 -->
+        <div class="case-card">
+          <div>
+            <span class="case-badge">Enterprise BI & Dashboards</span>
+            <h3>Hierarchical BI & Reporting Platform</h3>
+            <div class="case-client"><i data-lucide="building" style="width:14px;height:14px"></i> Industry: Financial Services & Wealth Management</div>
+            
+            <div class="case-field">
+              <strong>The Problem</strong>
+              <p>No unified reporting system was in place across the hierarchy. Executives received delayed data, branch managers hand-compiled sheets, and advisors lacked live targets.</p>
+            </div>
+            
+            <div class="case-field">
+              <strong>The Solution</strong>
+              <p>Built a centralized AWS Redshift database warehouse. Designed role-based visual dashboards in Tableau and AWS QuickSight tailored for Advisors, Managers, and Executives.</p>
+            </div>
+          </div>
+          
+          <div class="case-impact">
+            <strong><i data-lucide="trending-up" style="width:14px;height:14px"></i> Impact Details</strong>
+            <p>Saved 120+ team hours monthly, reduced corporate strategic planning cycles by 20%, and generated a 12% increase in sales activity due to advisor tracking.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Let's Connect</span>
+        <h2 class="section-title">Get in Touch</h2>
+        <p class="section-desc">Reach out directly via email or professional network for corporate consulting, audits, or project engagements.</p>
+      </div>
+      <div class="contact-container">
+        
+        <a href="mailto:anuragtk8@gmail.com" class="contact-card">
+          <div class="contact-icon"><i data-lucide="mail"></i></div>
+          <h3>Email Address</h3>
+          <p>anuragtk8@gmail.com</p>
+        </a>
+
+        <a href="tel:+919449901885" class="contact-card">
+          <div class="contact-icon"><i data-lucide="phone"></i></div>
+          <h3>Phone Number</h3>
+          <p>+91 94499 01885</p>
+        </a>
+
+        <a href="https://linkedin.com/in/anuragtk88" target="_blank" class="contact-card">
+          <div class="contact-icon"><i data-lucide="linkedin"></i></div>
+          <h3>LinkedIn Profile</h3>
+          <p>linkedin.com/in/anuragtk88</p>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Booking Section -->
+  <section id="book">
+    <div class="container">
+      <div class="section-header" style="text-align: center; margin: 0 auto 60px auto;">
+        <span class="section-tag">Availability</span>
+        <h2 class="section-title">Schedule a Free Consultation</h2>
+        <p class="section-desc" style="max-width: 600px; margin: 0 auto;">Select an available time slot below to schedule a 30-minute discovery call via video. We will review your current data bottlenecks and brainstorm options.</p>
+      </div>
+      
+      <div class="booking-wrapper">
+        <!-- Cal.com inline embed code starts here -->
+        <!-- Cal inline embed code begins -->
+        <div style="width:100%;height:100%;overflow:scroll" id="my-cal-inline-30min"></div>
+        <script type="text/javascript">
+          (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+        Cal("init", "30min", {origin:"https://app.cal.com"});
+        Cal.config = Cal.config || {};
+        Cal.config.forwardQueryParams = true;
+
+          Cal.ns["30min"]("inline", {
+            elementOrSelector:"#my-cal-inline-30min",
+            config: {"layout":"month_view","useSlotsViewOnSmallScreen":"true"},
+            calLink: "anurag-uyv3fa/30min",
+          });
+
+          Cal.ns["30min"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
+          </script>
+          <!-- Cal inline embed code ends -->
+        <!-- Cal.com inline embed code ends here -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Anurag TK. All rights reserved.</p>
+      <p>AI, Data & Automation Consultant | Bengaluru, India</p>
+    </div>
+  </footer>
+
+  <!-- Initialize Lucide Icons -->
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>
